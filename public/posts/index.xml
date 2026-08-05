@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Posts on Milk_Dragon&#39;s blog</title>
+    <link>https://orangeoi.qzz.io/posts/</link>
+    <description>Recent content in Posts on Milk_Dragon&#39;s blog</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 05 Aug 2026 21:35:13 +0800</lastBuildDate>
+    <atom:link href="https://orangeoi.qzz.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hello Hugo</title>
+      <link>https://orangeoi.qzz.io/2026/08/05/hello-hugo/</link>
+      <pubDate>Wed, 05 Aug 2026 21:35:13 +0800</pubDate>
+      <guid>https://orangeoi.qzz.io/2026/08/05/hello-hugo/</guid>
+      <description>&lt;p&gt;一篇文章&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>ST表&amp;RMQ</title>
+      <link>https://orangeoi.qzz.io/2026/08/05/st%E8%A1%A8rmq/</link>
+      <pubDate>Wed, 05 Aug 2026 21:35:13 +0800</pubDate>
+      <guid>https://orangeoi.qzz.io/2026/08/05/st%E8%A1%A8rmq/</guid>
+      <description>&lt;p&gt;ST表&amp;amp;RMQ&lt;/p&gt;
+&lt;p&gt;ST表常用来快速求区间最值，即RMQ问题。&lt;/p&gt;
+&lt;p&gt;设 $ f_{i,j} $ 表示区间 $ [i,i+2^j-1] $ 中的最大值，显然 $ f_{i,j}=max(f_{i,j-1},f_{i+2^{j-1},j-1}) $。&lt;/p&gt;
+&lt;p&gt;查询时，我们设 $ k=log_{2}(r-l+1) $，所以答案为 $ max(f_{l,k},f_{r-2^k+1,k}) $。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>前缀和&amp;二维前缀和</title>
+      <link>https://orangeoi.qzz.io/2026/08/05/%E5%89%8D%E7%BC%80%E5%92%8C%E4%BA%8C%E7%BB%B4%E5%89%8D%E7%BC%80%E5%92%8C/</link>
+      <pubDate>Wed, 05 Aug 2026 21:35:13 +0800</pubDate>
+      <guid>https://orangeoi.qzz.io/2026/08/05/%E5%89%8D%E7%BC%80%E5%92%8C%E4%BA%8C%E7%BB%B4%E5%89%8D%E7%BC%80%E5%92%8C/</guid>
+      <description>&lt;h3 id=&#34;前缀和二维前缀和&#34;&gt;前缀和&amp;amp;二维前缀和&lt;/h3&gt;
+&lt;p&gt;一维前缀和：没什么好讲的。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;二维前缀和：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;设 $f_{i,j}$ 表示左上角为 $(0,0)$，右下角为 $(i,j)$ 的矩阵中所有数的和，则根据容斥原理，$f_{i,j}=a_{i,j}+f_{i-1,j}+f_{i,j-1}-f_{i-1,j-1}$。如图所示：&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>树上LCA</title>
+      <link>https://orangeoi.qzz.io/2026/08/05/%E6%A0%91%E4%B8%8Alca/</link>
+      <pubDate>Wed, 05 Aug 2026 21:35:13 +0800</pubDate>
+      <guid>https://orangeoi.qzz.io/2026/08/05/%E6%A0%91%E4%B8%8Alca/</guid>
+      <description>&lt;h3 id=&#34;树上lca&#34;&gt;树上LCA&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;倍增法&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;设 $f_{i,j}$ 为第 $i$ 个点往上跳 $2^j$ 个点所到的点，显然 $f_{i,0}$ 为第 $i$ 个点的父亲。&lt;/p&gt;
+&lt;p&gt;对于点 $u,v$，我们只需要将它们调整至同一深度，然后一起往上跳（不能重合）直到不能再跳，则最后它们的父亲就是 $lca(u,v)$。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>线段树</title>
+      <link>https://orangeoi.qzz.io/2026/08/05/%E7%BA%BF%E6%AE%B5%E6%A0%91/</link>
+      <pubDate>Wed, 05 Aug 2026 21:35:13 +0800</pubDate>
+      <guid>https://orangeoi.qzz.io/2026/08/05/%E7%BA%BF%E6%AE%B5%E6%A0%91/</guid>
+      <description>&lt;h2 id=&#34;线段树&#34;&gt;线段树&lt;/h2&gt;
+&lt;p&gt;线段树常用来高效进行区间修改和区间查询，其实际上为一个二叉树，每一个节点都存储着一段区间的信息。假设 $i$ 号点维护的区间是 $[l,r]$，则其左儿子 $2i$ 维护的区间为 $[l,\left \lfloor \frac{l+r}{2}  \right \rfloor ]$，其右儿子 $2i+1$ 维护的区间为 $(\left \lfloor \frac{l+r}{2}  \right \rfloor,r]$。如图所示。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
