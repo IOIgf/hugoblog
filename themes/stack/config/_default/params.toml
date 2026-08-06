@@ -106,7 +106,7 @@ SortBy         = "default"
 
 [comments]
     enabled  = true
-    provider = "gitalk"
+    provider = "giscus"
 
     [comments.artalk]
         serverUrl = ""
@@ -170,17 +170,17 @@ SortBy         = "default"
         siteName             = ""  # You must insert a unique identifier here matching the one you registered (See https://cactus.chat/docs/getting-started/quick-start/#register-your-site)
 
     [comments.giscus]
-        repo             = ""
-        repoID           = ""
-        category         = ""
-        categoryID       = ""
-        mapping          = "title"
+        repo             = "IOIgf/blogtalk"
+        repoID           = "R_kgDOTp2CeQ"
+        category         = "Announcements"
+        categoryID       = "DIC_kwDOTp2Cec4DCbcP"
+        mapping          = "pathname"
         lightTheme       = "light"
         darkTheme        = "dark_dimmed"
         reactionsEnabled = 1
         emitMetadata     = 0
         inputPosition    = "top"
-        lang             = "en"
+        lang             = "zh-CN"
         strict           = 0
         loading          = "lazy"
 
