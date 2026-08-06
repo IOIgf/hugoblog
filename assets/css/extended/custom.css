@@ -40,3 +40,8 @@ code, pre, .post-content code, .post-content pre {
     font-family: "Fira Code", "JetBrains Mono", Consolas, monospace !important;
 	font-size: 0.95em; /* 调整为你喜欢的值，比如 14px, 0.9em 等 */
 }
+
+pre, code {
+    tab-size: 4 !important;
+    -moz-tab-size: 4 !important;
+}
