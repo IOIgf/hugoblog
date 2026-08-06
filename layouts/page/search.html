@@ -1,33 +1,75 @@
-{{ define "body-class" }}template-search{{ end }}
-{{ define "head" }}
-    {{- with .OutputFormats.Get "json" -}} 
-        <link rel="preload" href="{{ .RelPermalink }}" as="fetch" crossorigin="anonymous">
-    {{- end -}}
-{{ end }}
 {{ define "main" }}
-<form action="{{ .RelPermalink }}" class="search-form"{{ with .OutputFormats.Get "json" -}} data-json="{{ .RelPermalink }}"{{- end }}>
-    <p>
-        <label>{{ T "search.title" }}</label>
-        <input name="keyword" placeholder="{{ T `search.placeholder` }}" />
-    </p>
+    <div class="search-page">
+        <h1 class="search-title">{{ .Title }}</h1>
+        <div class="search-form">
+            <input type="search" id="search-input" placeholder="输入关键词搜索..." />
+            <div id="search-results" class="search-results"></div>
+        </div>
+    </div>
 
-    <button title="{{ T `search.title` }}">
-        {{ partial "helper/icon" "search" }}
-    </button>
-</form>
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('search-input');
+            const resultsContainer = document.getElementById('search-results');
+            if (!searchInput || !resultsContainer) return;
 
-<div class="search-result hidden">
-    <h3 class="search-result--title section-title"></h3>
-    <div class="search-result--list article-list--compact"></div>
-</div>
+            fetch('/search/index.json')
+                .then(response => response.json())
+                .then(data => {
+                    const fuse = new Fuse(data, {
+                        keys: ['title', 'content', 'categories', 'tags'],
+                        threshold: 0.3,
+                        includeMatches: true,
+                        minMatchCharLength: 1
+                    });
+                    
+                    searchInput.addEventListener('input', function() {
+                        const query = this.value.trim();
+                        if (query.length < 1) {
+                            resultsContainer.innerHTML = '';
+                            return;
+                        }
+                        
+                        const results = fuse.search(query);
+                        if (results.length === 0) {
+                            resultsContainer.innerHTML = '<p class="no-results">没有找到相关文章</p>';
+                            return;
+                        }
+                        
+                        let html = '';
+                        results.slice(0, 20).forEach(result => {
+                            const item = result.item;
+                            html += `
+                                <div class="search-result">
+                                    <a href="${item.permalink}">
+                                        <h3>${item.title}</h3>
+                                        ${item.summary ? `<p>${item.summary}</p>` : ''}
+                                    </a>
+                                </div>
+                            `;
+                        });
+                        resultsContainer.innerHTML = html;
+                    });
+                })
+                .catch(error => {
+                    resultsContainer.innerHTML = '<p class="error">加载搜索数据失败，请刷新页面重试。</p>';
+                });
+        });
+    </script>
 
-<script>
-    window.searchResultTitleTemplate = "{{ T `search.resultTitle` }}"
-</script>
-
-{{- $opts := dict "minify" hugo.IsProduction "JSXFactory" "createElement" -}}
-{{- $searchScript := resources.Get "ts/search.tsx" | js.Build $opts -}}
-<script type="text/javascript" src="{{ $searchScript.RelPermalink }}" defer></script>
-
-{{ partialCached "footer/footer" . }}
+    <style>
+        .search-page { max-width: 800px; margin: 0 auto; padding: 20px; }
+        .search-title { font-size: 2rem; margin-bottom: 1.5rem; }
+        .search-form { margin-bottom: 2rem; }
+        #search-input { width: 100%; padding: 12px 16px; font-size: 1.1rem; border: 1px solid #ccc; border-radius: 8px; background: #fff; color: #333; outline: none; }
+        #search-input:focus { border-color: #4285f4; box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.3); }
+        .search-results { margin-top: 1rem; }
+        .search-result { padding: 12px 0; border-bottom: 1px solid #eee; }
+        .search-result:last-child { border-bottom: none; }
+        .search-result a { text-decoration: none; color: inherit; }
+        .search-result h3 { margin: 0 0 4px 0; font-size: 1.1rem; color: #4285f4; }
+        .search-result p { margin: 0; font-size: 0.9rem; color: #555; opacity: 0.7; }
+        .no-results, .error { text-align: center; color: #777; padding: 40px 0; }
+    </style>
 {{ end }}
