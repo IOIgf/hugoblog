@@ -11,11 +11,11 @@ hasCJKLanguage = true
 [params]
     mainSections = ["posts"]
     rssFullContent = true
-    favicon = "img/favicon.jpg"
+    favicon = "/img/avatar.jpg"
 
     [params.sidebar]
         subtitle = "我是奶龙"
-        avatar = "img/avatar.jpg"
+        avatar = "/img/avatar.jpg"
 
     [params.article]
         math = true
