@@ -36,3 +36,7 @@ hasCJKLanguage = true
     [markup.highlight]
         style = "dracula"
         lineNumbers = true
+		
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  page = ["HTML", "JSON"]
