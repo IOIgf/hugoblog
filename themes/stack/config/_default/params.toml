@@ -15,7 +15,7 @@ SortBy         = "default"
 
 [sidebar]
     compact = false
-    avatar  = "img/avatar.jpg"
+    avatar  = "/img/avatar.jpg"
 
 [article]
     headingAnchor = false
