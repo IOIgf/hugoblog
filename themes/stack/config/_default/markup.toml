@@ -1,0 +1,8 @@
+[goldmark.renderer]
+    unsafe = true
+
+[goldmark.extensions.passthrough]
+    enable = true
+    [goldmark.extensions.passthrough.delimiters]
+        block = [['\[', '\]'], ['$$', '$$']]
+        inline = [['\(', '\)']]
