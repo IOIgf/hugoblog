@@ -15,7 +15,7 @@ SortBy         = "default"
 
 [sidebar]
     compact = false
-    avatar  = ""
+    avatar  = "img/avatar.jpg"
 
 [article]
     headingAnchor = false
@@ -63,8 +63,15 @@ SortBy         = "default"
         caution   = "🚨"
 
 [widgets]
-    homepage = []
-    page     = []
+    homepage = [
+        { type = "search" },                                    # 搜索框
+        { type = "archives", params = { limit = 5 } },          # 归档（显示最近5篇）
+        { type = "categories", params = { limit = 10 } },       # 分类（显示最多10个）
+        { type = "tag-cloud", params = { limit = 10 } },        # 标签云（显示最多10个）
+    ]
+    page = [
+        { type = "toc" },                                       # 文章目录（仅在文章页面显示）
+    ]
 
 [opengraph.twitter]
     site = ""
@@ -99,7 +106,7 @@ SortBy         = "default"
 
 [comments]
     enabled  = true
-    provider = "disqus"
+    provider = "gitalk"
 
     [comments.artalk]
         serverUrl = ""
@@ -177,13 +184,11 @@ SortBy         = "default"
         strict           = 0
         loading          = "lazy"
 
-    [comments.gitalk]
-        owner        = ""
-        admin        = ""
-        repo         = ""
-        clientID     = ""
-        clientSecret = ""
-        proxy        = ""
+	[comments.gitalk]
+	    owner = "IOIgf"
+	    repo = "blogtalk"
+	    clientID = "Ov23litfkbZRjs3E4ov1"
+	    clientSecret = "6cb516029a7be6b2a71e1708afbe98a514dd5fc8"
 
     [comments.cusdis]
         host = "https://cusdis.com"
