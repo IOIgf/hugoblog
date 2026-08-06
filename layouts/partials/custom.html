@@ -1,11 +1,5 @@
-<!-- KaTeX 使用国内镜像 -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
-
 <script>
-    // 改用 load 事件，确保所有资源加载完成后再渲染
-    window.addEventListener("load", function() {
+    function renderMath() {
         renderMathInElement(document.body, {
             delimiters: [
                 {left: '$$', right: '$$', display: true},
@@ -15,5 +9,19 @@
             ],
             throwOnError: false
         });
+    }
+
+    // 先尝试在 load 事件中执行
+    window.addEventListener("load", function() {
+        renderMath();
     });
+
+    // 兜底：如果 load 事件已经触发，直接执行（但给浏览器一点时间）
+    if (document.readyState === "complete") {
+        setTimeout(renderMath, 500);
+    } else {
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(renderMath, 500);
+        });
+    }
 </script>
