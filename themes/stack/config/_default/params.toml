@@ -186,9 +186,11 @@ SortBy         = "default"
 
 	[comments.gitalk]
 	    owner = "IOIgf"
+		admin = ["IOIgf"]
 	    repo = "blogtalk"
 	    clientID = "Ov23litfkbZRjs3E4ov1"
 	    clientSecret = "6cb516029a7be6b2a71e1708afbe98a514dd5fc8"
+		proxy = "https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"
 
     [comments.cusdis]
         host = "https://cusdis.com"
