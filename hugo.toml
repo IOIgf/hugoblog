@@ -9,7 +9,7 @@ hasCJKLanguage = true
     posts = ":year/:month/:day/:slug/"
 
 [params]
-    mainSections = ["post"]
+    mainSections = ["posts"]
     rssFullContent = true
     favicon = "img/favicon.jpg"
 
