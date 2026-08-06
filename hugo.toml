@@ -1,141 +1,38 @@
-# ============================================================
-# 基础站点配置
-# ============================================================
-
-baseURL = 'https://orangeoi.qzz.io/'          # 你的博客地址，注意末尾的 /
-title = "Milk_Dragon's blog"                 # 博客标题
-theme = "stack"                            # 当前主题
-locale = 'zh-cn'                        # 语言，改为 zh-cn
-defaultContentLanguage = 'zh-cn'              # 默认内容语言
-hasCJKLanguage = true                         # 是否包含中日韩文字（影响字数统计）
-
-# ============================================================
-# 永久链接格式
-# ============================================================
+baseURL = "https://orangeoi.qzz.io/"
+title = "Milk_Dragon's blog"
+theme = "stack"
+languageCode = "zh-cn"
+defaultContentLanguage = "zh"
+hasCJKLanguage = true
 
 [permalinks]
-  posts = ":year/:month/:day/:slug/"          # 与 Hexo 的 permalink 保持一致
-
-# ============================================================
-# 输出格式
-# ============================================================
-
-[outputs]
-  home = ["HTML", "RSS", "JSON"]              # 首页输出格式
-
-# ============================================================
-# 菜单配置
-# ============================================================
-
-[[menu.main]]
-  name = "首页"
-  url = "/"
-  weight = 1
-
-[[menu.main]]
-  identifier = "archive"
-  name = "归档"
-  url = "/archives/"
-  weight = 2
-
-[[menu.main]]
-  identifier = "categories"
-  name = "分类"
-  url = "/categories/"
-  weight = 3
-
-[[menu.main]]
-  identifier = "tags"
-  name = "标签"
-  url = "/tags/"
-  weight = 4
-
-[[menu.main]]
-  identifier = "search"
-  name = "搜索"
-  url = "/search/"
-  weight = 5
-
-# ============================================================
-# PaperMod 主题参数（核心！）
-# ============================================================
+    posts = ":year/:month/:day/:slug/"
 
 [params]
-  author = "zzy"
-  description = "奶龙的博客"
-  keywords = ["OI", "算法", "C++"]
-  defaultTheme = "auto"
-  disableThemeToggle = false
-  ShowReadingTime = true
-  ShowPostNavLinks = true
-  ShowBreadCrumbs = true
-  ShowCodeCopyButtons = true
-  ShowWordCount = true
-  ShowRssButtonInSectionTermList = true
-  ShowToc = true
-  TocOpen = false
-  ShowShareButtons = true
-  ShowLastMod = true
-  math = true
-  # 使用点键配置 homeInfoParams
-  homeInfoParams.Title = "欢迎来到 Milk_Dragon'blog"
-  homeInfoParams.Content = "我是奶龙"
-  [params.gitalk]
-    owner = "IOIgf"
-    repo = "blogtalk"
-    clientId = "Ov23litfkbZRjs3E4ov1"
-    clientSecret = "6cb516029a7be6b2a71e1708afbe98a514dd5fc8"
+    mainSections = ["post"]
+    rssFullContent = true
+    favicon = "img/favicon.jpg"
 
-# socialIcons 必须独立成数组
-[[params.socialIcons]]
-  name = "github"
-  url = "https://github.com/IOIgf"
+    [params.sidebar]
+        subtitle = "我是奶龙"
+        avatar = "img/avatar.jpg"
 
-[[params.socialIcons]]
-  name = "email"
-  url = "mailto:zbt662720@outlook.com"
+    [params.article]
+        math = true
+        readingTime = true
 
-# ============================================================
-# 代码高亮配置
-# ============================================================
+    [params.footer]
+        since = 2026
 
 [markup]
-  [markup.highlight]
-    style = "dracula"                         # 代码高亮主题
-    noClasses = false
-    lineNumbersInTable = false                # 是否使用表格显示行号
-    lineNumbers = true                       # 是否显示行号
-  [markup.goldmark]
-    [markup.goldmark.extensions]
-      [markup.goldmark.extensions.passthrough]
-        enable = true
-        [markup.goldmark.extensions.passthrough.delimiters]
-          block = [['\[', '\]'], ['$$', '$$']]
-          inline = [['\(', '\)']]
-
-# ============================================================
-# 站点地图
-# ============================================================
-
-[sitemap]
-  changefreq = "monthly"
-  filename = "sitemap.xml"
-  priority = 0.5
-
-# ============================================================
-# RSS 订阅
-# ============================================================
-
-[rss]
-  limit = 20                                  # RSS 输出最大文章数
-
-# ============================================================
-# 自定义输出路径（如果有）
-# ============================================================
-
-# [params.assets]
-#   favicon = "/images/favicon.ico"
-#   disableFingerprinting = true
-[taxonomies]
-  category = "categories"
-  tag = "tags"
+    [markup.goldmark]
+        [markup.goldmark.renderer]
+            unsafe = true
+        [markup.goldmark.extensions.passthrough]
+            enable = true
+            [markup.goldmark.extensions.passthrough.delimiters]
+                block = [['\[', '\]'], ['$$', '$$']]
+                inline = [['\(', '\)']]
+    [markup.highlight]
+        style = "dracula"
+        lineNumbers = true
