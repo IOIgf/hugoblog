@@ -1,0 +1,27 @@
+[[main]]
+    name = "首页"
+    url = "/"
+    weight = 1
+    [main.params]
+        icon = "home"
+
+[[main]]
+    name = "归档"
+    url = "/archives/"
+    weight = 2
+    [main.params]
+        icon = "archives"
+
+[[main]]
+    name = "关于"
+    url = "/about/"
+    weight = 5
+    [main.params]
+        icon = "user"
+
+[[main]]
+    name = "搜索"
+    url = "/search/"
+    weight = 6
+    [main.params]
+        icon = "search"
