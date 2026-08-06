@@ -72,6 +72,7 @@ hasCJKLanguage = true                         # 是否包含中日韩文字（�
   TocOpen = false
   ShowShareButtons = true
   ShowLastMod = true
+  math = true
 
   # 使用点键配置 homeInfoParams
   homeInfoParams.Title = "欢迎来到 Milk_Dragon 的算法笔记"
@@ -100,7 +101,14 @@ hasCJKLanguage = true                         # 是否包含中日韩文字（�
     style = "dracula"                         # 代码高亮主题
     noClasses = false
     lineNumbersInTable = false                # 是否使用表格显示行号
-    lineNumbers = true                        # 是否显示行号
+    lineNumbers = true                       # 是否显示行号
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\[', '\]'], ['$$', '$$']]
+          inline = [['\(', '\)']]
 
 # ============================================================
 # 站点地图
