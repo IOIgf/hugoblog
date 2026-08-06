@@ -8,6 +8,22 @@ hasCJKLanguage = true
 [permalinks]
     posts = ":year/:month/:day/:slug/"
 
+[params]
+    mainSections = ["posts"]
+    rssFullContent = true
+    favicon = "img/favicon.jpg"
+
+    [params.sidebar]
+        subtitle = "我是奶龙"
+        avatar = "img/avatar.jpg"
+
+    [params.article]
+        math = true
+        readingTime = true
+
+    [params.footer]
+        since = 2026
+
 [markup]
     [markup.goldmark]
         [markup.goldmark.renderer]
