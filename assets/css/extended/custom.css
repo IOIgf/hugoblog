@@ -31,3 +31,12 @@
     white-space: nowrap;
     animation: typing 2s steps(30) forwards;
 }
+
+/* 1. 从 Google Fonts 引入 Fira Code 字体 */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
+
+/* 2. 将字体应用到代码上 */
+code, pre, .post-content code, .post-content pre {
+    font-family: "Fira Code", "JetBrains Mono", Consolas, monospace !important;
+	font-size: 0.95em; /* 调整为你喜欢的值，比如 14px, 0.9em 等 */
+}
